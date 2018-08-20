@@ -79,3 +79,40 @@ paths:
                  type: string
               timestamp:
                  type: string
+    delete:
+      operationId: people.delete
+      tags:
+        - "People"
+      summary: delete person from dictionary if exists
+      description: delete one person from dictionary if exits
+      parameters:
+        - name: lname
+          in: path
+          description: last name of person
+          type: string
+          required: True
+      responses:
+        200:
+          description: sucessful delete of person
+    put:
+      operationId: people.update
+      tags:
+        - "People"
+      summary: update person if they exist
+      description: update person if they exist inside the PEOPLE dicitonary
+      parameters:
+        - name: lname
+          in: path
+          description: last name of person
+          type: string
+          required: True
+        - name: person
+          in: body
+          schema:
+            type: object
+            properties:
+              fname:
+                type: string
+      responses:
+        200:
+          description: successful update

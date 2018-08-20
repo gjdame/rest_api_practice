@@ -9,7 +9,7 @@ def get_timestamp():
 PEOPLE = {
     "Farrell": {
         "fname": "Doug",
-        "lanme": "Farrell",
+        "lname": "Farrell",
         "timestamp": get_timestamp()
     },
     "Dame": {
@@ -57,3 +57,21 @@ def read_one(lname):
 
 
     return (person)
+
+def update(lname, person):
+    if lname in PEOPLE:
+        PEOPLE[lname] = {
+            'lname': lname,
+            'fname': person.get('fname'),
+            'timestamp': get_timestamp()
+        }
+        return make_response('{} updated'.format(lname), 200)
+    else:
+        abort(404, "Person with last name {} does NOT exist".format(lname))
+
+def delete(lname):
+    if lname in PEOPLE:
+        del PEOPLE[lname]
+        return make_response("sucess", 200)
+    else:
+         abort(404, "Person with last name {} does NOT exist".format(person.lnmme))
